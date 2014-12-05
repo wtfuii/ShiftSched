@@ -1,5 +1,5 @@
 if (Meteor.users.find().count() == 0) {
-    var a = Accounts.createUser({username: "ESchoeneberg", password:"123456", email:"els@gmx.de"})
+    var a = Accounts.createUser({username: "EPutin", password:"123456", email:"Put@gmx.de"})
     var b = Accounts.createUser({username: "HMeier", password:"123456", email:"dafuqington@gmail.com"})
     var c = Accounts.createUser({username: "PSchlau", password:"123456", email:"oh@hai.de"})
     var d = Accounts.createUser({username: "BMaja", password:"123456", email:"biene@maja.net"})
@@ -11,4 +11,7 @@ if (Meteor.users.find().count() == 0) {
     Roles.addUsersToRoles(b, "2", "group")
     Roles.addUsersToRoles(c, "2", "group")
     Roles.addUsersToRoles(d, "AG", "group")
+    var f = Schedules.insert({year: 2014, month: 2, group: "3"})
+    Times.insert({user: a, schedule: f, startTime: new Date(2014, 1, 2, 13), endTime: new Date(2014, 1, 2, 15)})
+    Times.insert({user: a, schedule: f, startTime: new Date(2014, 1, 4, 13), endTime: new Date(2014, 1, 4, 15)})
 }

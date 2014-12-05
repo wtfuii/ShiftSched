@@ -1,4 +1,30 @@
 <template name="schedule">
-    
-    {{this}}
+        <table class="table table-hover">
+                <thead>
+                        <tr>
+                                <th>
+                                        Tag
+                                </th>
+                                {{#each users}}
+                                <th>
+                                        {{ username }}
+                                </th>
+                                {{/each}}
+                        </tr>
+                        {{#each days}}
+                        <tr>
+                                <td>
+                                        {{day}}
+                                </td>
+                                {{#each times}}
+                                <td>
+                                        {{#each this}}
+                                        {{startTime}} - {{endTime}} 
+                                        {{/each}}
+                                </td>
+                                {{/each}}
+                        </tr>
+                        {{/each}}
+                </thead>
+        </table>
 </template>
