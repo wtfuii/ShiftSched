@@ -1,6 +1,6 @@
 <template name="schedules">
     <a type="button" class="btn btn-primary" href="{{pathFor 'newSchedule'}}">Neu</a>
     {{#each groupedSchedules}}
-        {{> reactiveTable collection=this}}
+        {{> reactiveTable collection=this settings=settings}}
     {{/each}}
 </template>
