@@ -11,7 +11,8 @@ if (Meteor.users.find().count() == 0) {
     Roles.addUsersToRoles(b, "2", "group")
     Roles.addUsersToRoles(c, "2", "group")
     Roles.addUsersToRoles(d, "AG", "group")
-    var f = Schedules.insert({year: 2014, month: 2, group: "3"})
-    Times.insert({user: a, schedule: f, startTime: new Date(2014, 1, 2, 13), endTime: new Date(2014, 1, 2, 15)})
-    Times.insert({user: a, schedule: f, startTime: new Date(2014, 1, 4, 13), endTime: new Date(2014, 1, 4, 15)})
+    Meteor.call("onNewSchedule", {year: 2014, month: 2, group: "3"}, function (err, res) {
+        Times.insert({userid: a, year: 2014, month: 2, day: 4, group: 3, starttime: new Date(2014, 2, 4, 13), endtime: new Date(2014, 2, 4, 19)})
+        Times.insert({userid: a, year: 2014, month: 2, day: 6, group: 3, starttime: new Date(2014, 2, 6, 12), endtime: new Date(2014, 2, 6, 21)})
+    })
 }

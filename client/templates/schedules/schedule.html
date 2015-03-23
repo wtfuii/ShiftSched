@@ -14,12 +14,12 @@
                         {{#each days}}
                         <tr>
                                 <td>
-                                        {{day}}
+                                        {{this}}
                                 </td>
-                                {{#each times}}
-                                <td>
-                                        {{#each this}}
-                                        {{startTime}} - {{endTime}} 
+                                {{#each usersanddate ../users this}}
+                                <td data-user="{{ _id }}" data-day="{{ day }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
+                                        {{#each findTimes day ../../month ../../year  _id}}
+                                        {{starttime}} - {{endtime}} 
                                         {{/each}}
                                 </td>
                                 {{/each}}
