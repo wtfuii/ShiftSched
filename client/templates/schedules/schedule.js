@@ -13,5 +13,10 @@ Template.schedule.helpers({
 Template.schedule.events({
     "click .deletetime": function() {
         Times.remove(this._id)
+    },
+    "click .addtime": function(event) {
+        event.preventDefault();
+        console.log($(event.target).siblings(".addtimefield"))
+        $(event.target).siblings(".addtimefield").html("<form><input type='text' name='start'><input type='text' name='end'></form>")
     }
 })
