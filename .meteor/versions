@@ -1,11 +1,11 @@
 accounts-base@1.2.0
 accounts-password@1.1.0
 alanning:roles@1.2.13
-aldeed:autoform@5.0.3
+aldeed:autoform@5.0.2
 aldeed:collection2@2.3.2
 aldeed:simple-schema@1.3.1
 anti:i18n@0.4.3
-aslagle:reactive-table@0.7.1
+aslagle:reactive-table@0.7.0
 autopublish@1.0.3
 autoupdate@1.2.0
 base64@1.0.3

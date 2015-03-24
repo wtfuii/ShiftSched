@@ -16,7 +16,6 @@ Template.schedule.events({
     },
     "click .addtime": function(event) {
         event.preventDefault();
-        console.log($(event.target).siblings(".addtimefield"))
-        $(event.target).siblings(".addtimefield").html("<form><input type='text' name='start'><input type='text' name='end'></form>")
+        $(event.currentTarget).siblings(".addtimefield").append("<form><input type='text' name='start'><input type='text' name='end'></form>")
     }
 })
