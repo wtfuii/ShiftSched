@@ -9,3 +9,9 @@ Template.schedule.helpers({
        return users
    }
 })
+
+Template.schedule.events({
+    "click .deletetime": function() {
+        Times.remove(this._id)
+    }
+})

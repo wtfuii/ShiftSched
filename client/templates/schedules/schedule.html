@@ -19,8 +19,9 @@
                                 {{#each usersanddate ../users this}}
                                 <td data-user="{{ _id }}" data-day="{{ day }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
                                         {{#each findTimes day ../../month ../../year  _id}}
-                                        {{starttime}} - {{endtime}} 
+                                        {{formatDateHHMM starttime}} - {{formatDateHHMM endtime}} <a href="#" class="deletetime"><i class="fa fa-minus"></i></a>
                                         {{/each}}
+                                        <i class="fa fa-plus"></i>
                                 </td>
                                 {{/each}}
                         </tr>
