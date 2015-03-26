@@ -14,7 +14,7 @@
                         {{#each days}}
                         <tr>
                                 <td>
-                                        {{this}}
+                                        {{ formatDateD this ../month ../year}}
                                 </td>
                                 {{#each usersanddate ../users this}}
                                 <td data-user="{{ _id }}" data-day="{{ day }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
@@ -27,6 +27,16 @@
                                 {{/each}}
                         </tr>
                         {{/each}}
+                        <tr>
+                            <td>
+                                Stunden
+                            </td>
+                            <td>
+                             {{#each ../users}}
+                                    {{getWorkedHours ./../month ../../year  _id }}
+                             {{/each}}
+                             </td>
+                        </tr>
                 </thead>
         </table>
 </template>
