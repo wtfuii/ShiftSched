@@ -3,10 +3,7 @@ Template.schedule.helpers({
         return Times.find({userid: userid, year: year, month: month, day: day})
    },
    usersanddate: function(users, date) {
-       for (i=0; i < users.length; i++) {
-           users[i].day = date
-       }
-       return users
+       return {users: users, date: date}
    },
    getWorkedHours: function(month, year, id) {
        var t = Times.find({month: month, year: year, userid: id}).fetch()
@@ -15,6 +12,13 @@ Template.schedule.helpers({
            r = r + t[i].workedhours
        }
        return moment.duration(r).asHours()
+   },
+   getDaysList: function(days) {
+        var a = []
+            for (var i = 1; i <= days; i++) {
+                a.push(i)
+            }
+        return a
    }
 })
 

@@ -11,14 +11,14 @@
                                 </th>
                                 {{/each}}
                         </tr>
-                        {{#each days}}
+                        {{#each getDaysList days}}
                         <tr>
                                 <td>
                                         {{ formatDateD this ../month ../year}}
                                 </td>
-                                {{#each usersanddate ../users this}}
-                                <td data-user="{{ _id }}" data-day="{{ day }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
-                                        {{#each findTimes day ../../month ../../year  _id}}
+                                {{#each ../users}}
+                                <td data-user="{{ _id }}" data-day="{{ .. }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
+                                        {{#each findTimes .. ../../month ../../year  _id}}
                                         {{formatDateHHMM starttime}} - {{formatDateHHMM endtime}} <a href="#" class="deletetime"><i class="fa fa-minus"></i></a>
                                         {{/each}}
                                         <div class="addtimefield"></div>
@@ -31,11 +31,11 @@
                             <td>
                                 Stunden
                             </td>
+                            {{#each ../users}}
                             <td>
-                             {{#each ../users}}
                                     {{getWorkedHours ./../month ../../year  _id }}
-                             {{/each}}
-                             </td>
+                            </td>
+                            {{/each}}
                         </tr>
                 </thead>
         </table>
