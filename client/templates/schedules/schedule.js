@@ -2,6 +2,9 @@ Template.schedule.helpers({
     findTimes: function(day, month, year, userid) {
         return Times.find({userid: userid, year: year, month: month, day: day})
    },
+   usersanddate: function(users, date) {
+       return {users: users, date: date}
+   },
    getWorkedHours: function(month, year, id) {
        var t = Times.find({month: month, year: year, userid: id}).fetch()
        r = 0
@@ -35,7 +38,6 @@ Template.schedule.events({
         var endtime = $(event.currentTarget).siblings("[name=end]").val()
         starttime = starttime.split(".")
         endtime = endtime.split(".")
-        console.log([starttime, endtime])
         if (invalidHour(starttime[0]) || invalidMinute(starttime[1]) || invalidHour(endtime[0]) || invalidMinute(endtime[1])) {
             return alert("Bitte gültige Uhrzeit eingeben.")
         }
