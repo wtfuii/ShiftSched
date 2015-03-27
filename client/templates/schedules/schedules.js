@@ -19,7 +19,7 @@ Template.schedules.helpers({
         return {
             fields: [
                 {key: "year", label: "Jahr"},
-                {key: "month", label: "Monat"},
+                {key: "month", label: "Monat", fn: function(value, object) { return value + 1}},
                 {key: "actions", label: "Aktionen", fn: function(value, object) {return new Spacebars.SafeString('<a href="#" class="edit">bearbeiten</a>')}}]
         }
     }
