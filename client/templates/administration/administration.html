@@ -1,0 +1,33 @@
+<template name="administration">
+<h1>Zeitmultiplikatoren</h1>
+   <thead>
+                        <tr>
+                                <th>
+                                        Tag
+                                </th>
+                                <th>
+                                    Startzeit
+                                </th>
+                                <th>
+                                    Endzeit
+                                </th>
+                        </tr>
+    </thead>
+                                {{#each this}}
+                                <tr>
+                                    <td>
+                                        {{ day }}
+                                    </td>
+                                    <td>
+                                        {{ start }}
+                                    </td>
+                                    <td>
+                                        {{ end }}
+                                    </td>
+                                    <td>
+                                        <a href="#">löschen</a>
+                                    </td>
+                                </tr>    
+                                {{/each}}
+                                <form><input type='text' name='start'><input type='text' name='end'><a href='#' class='submittime'><i class='fa fa-check'></i></a></form>
+</template>

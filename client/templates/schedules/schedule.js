@@ -36,11 +36,12 @@ Template.schedule.events({
         var data = $(event.currentTarget).closest("td").data()
         var starttime = $(event.currentTarget).siblings("[name=start]").val()
         var endtime = $(event.currentTarget).siblings("[name=end]").val()
-        starttime = starttime.split(".")
-        endtime = endtime.split(".")
-        if (invalidHour(starttime[0]) || invalidMinute(starttime[1]) || invalidHour(endtime[0]) || invalidMinute(endtime[1])) {
-            return alert("Bitte gültige Uhrzeit eingeben.")
+        var time = checkTime(starttime, endtime)
+        if (!time) {
+            return undefined
         }
+        starttime = time.start
+        endtime = time.end
         starttime = moment([data.year, data.month, data.day, starttime[0], starttime[1] || 0])
         endtime = moment([data.year, data.month, data.day, endtime[0], endtime[1] || 0])
         endtime = endtime <= starttime ? endtime.add(1, "d") : endtime
