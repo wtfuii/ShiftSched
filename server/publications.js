@@ -5,3 +5,7 @@ Meteor.publish("userData", function () {
 Meteor.publish("scheduleData", function() {
     return Schedules.find()
 })
+
+Meteor.publish("presetsData", function() {
+    return Presets.find()
+})

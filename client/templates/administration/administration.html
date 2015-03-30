@@ -1,9 +1,10 @@
 <template name="administration">
 <h1>Zeitmultiplikatoren</h1>
+   <table class="table table-hover">
    <thead>
                         <tr>
                                 <th>
-                                        Tag
+                                    Tag
                                 </th>
                                 <th>
                                     Startzeit
@@ -11,23 +12,42 @@
                                 <th>
                                     Endzeit
                                 </th>
+                                <th>
+                                    Multiplikator
+                                </th>
+                                <th>
+                                    löschen
+                                </th>
                         </tr>
     </thead>
+    <tbody>
                                 {{#each this}}
                                 <tr>
                                     <td>
-                                        {{ day }}
+                                        {{ getDaysFromShortcut days }}
                                     </td>
                                     <td>
-                                        {{ start }}
+                                        {{ formatDateHHMM starttime }}
                                     </td>
                                     <td>
-                                        {{ end }}
+                                        {{ formatDateHHMM endtime }}
                                     </td>
                                     <td>
-                                        <a href="#">löschen</a>
+                                        {{ multi }}
+                                    </td>
+                                    <td>
+                                         <a href="#" class="deletetime"><i class="fa fa-minus"></i></a>
                                     </td>
                                 </tr>    
                                 {{/each}}
-                                <form><input type='text' name='start'><input type='text' name='end'><a href='#' class='submittime'><i class='fa fa-check'></i></a></form>
+                                </tbody>
+                                </table>
+                                <form>
+                                <select name="days">
+                                <option value="w">Wochentag</option>
+                                <option value="a">Samstag</option>
+                                <option value="o">Sonntag</option>
+                                <option value="f">Feiertag</option>
+                                </select><input type='text' name='start'><input type='text' name='end'><input type='text' name='multi'><a href='#' class='submittime'><i class='fa fa-check'></i></a>
+                                </form>
 </template>
