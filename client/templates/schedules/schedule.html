@@ -32,11 +32,21 @@
                         {{/each}}
                         <tr>
                             <td>
-                                Stunden
+                                Stunden gearbeitet
                             </td>
                             {{#each ../users}}
                             <td>
                                     {{getWorkedHours ../../month ../../year  _id }}
+                            </td>
+                            {{/each}}
+                        </tr>
+                        <tr>
+                            <td>
+                                Stunden angerechnet
+                            </td>
+                            {{#each ../users}}
+                            <td>
+                                    {{getWorkedHours ../../month ../../year  _id 1 }}
                             </td>
                             {{/each}}
                         </tr>

@@ -5,11 +5,13 @@ Template.schedule.helpers({
    usersanddate: function(users, date) {
        return {users: users, date: date}
    },
-   getWorkedHours: function(month, year, id) {
+   getWorkedHours: function(month, year, id, withExtraHours) {
        var t = Times.find({month: month, year: year, userid: id}).fetch()
        r = 0
        for (i = 0; i < t.length; i++) {
            r = r + t[i].workedhours
+           console.log(t[i].multihours)
+           withExtraHours == 1 ? r = r + t[i].multihours : r = r
        }
        return moment.duration(r).asHours()
    },
