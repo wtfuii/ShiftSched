@@ -45,6 +45,27 @@ Template.schedule.events({
         starttime = moment([data.year, data.month, data.day, starttime[0], starttime[1] || 0])
         endtime = moment([data.year, data.month, data.day, endtime[0], endtime[1] || 0])
         endtime = endtime <= starttime ? endtime.add(1, "d") : endtime
+        var multi = undefined
+        if (checkHoliday(startime.toDate(), "NW")) {
+            multi = Presets.find({days: "f"})
+        } else {
+            switch (starttime.day()) {
+                case 0:
+                    multi = Presets.find({days: "o"})
+                    break
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    multi = Presets.find({days: "w"})
+                    break
+                case 6:
+                    multi = Presets.find({days: "a"})
+                    break
+            }
+            
+        }
         Times.insert({userid: data.user, month: data.month, year: data.year, day: data.day, starttime: starttime.toISOString(), endtime: endtime.toISOString(), workedhours: endtime.diff(starttime)})
         var td = $(event.currentTarget).closest("td")
         $(event.currentTarget).closest(".addtimefield").html("")
