@@ -77,7 +77,6 @@ Template.schedule.events({
             momentendmulti = moment([starttime.year(), starttime.month(), starttime.date() + multi[i].nextday, momentendmulti.hour(), momentendmulti.minute()])
             var multirange = moment().range(momentstartmulti, momentendmulti)
             var intersect = workrange.intersect(multirange)
-            console.log({workrange: workrange, multirange: multirange})
             if (intersect) {
                 var countedhours = intersect.diff()
                 multihours = multihours + (countedhours * (multi[i].multi - 1))

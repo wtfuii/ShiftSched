@@ -1,56 +1,58 @@
 <template name="schedule">
-        <h2>{{ formatDateMY month year}}, Gruppe:{{ group }}</h2>
-        <table class="table table-hover">
-                <thead>
-                        <tr>
-                                <th>
-                                        Tag
-                                </th>
-                                {{#each users}}
-                                <th>
-                                        {{ username }}
-                                </th>
-                                {{/each}}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{#each getDaysList days}}
-                        <tr>
-                                <td>
-                                        {{ formatDateD this ../month ../year}}
-                                </td>
-                                {{#each ../users}}
-                                <td data-user="{{ _id }}" data-day="{{ .. }}" data-month="{{ ../../month }}" data-year="{{ ../../year }}">
-                                        {{#each findTimes .. ../../month ../../year  _id}}
-                                        {{formatDateHHMM starttime}} - {{formatDateHHMM endtime}} <a href="#" class="deletetime"><i class="fa fa-minus"></i></a>
-                                        {{/each}}
-                                        <div class="addtimefield"></div>
-                                        <a href="#" class="addtime"><i class="fa fa-plus"></i></a>
-                                </td>
-                                {{/each}}
-                        </tr>
+    <h2>{{ formatDateMY month year}}, Gruppe:{{ group }}</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>
+                Tag
+            </th>
+            {{#each users}}
+                <th>
+                    {{ username }}
+                </th>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#each getDaysList days}}
+            <tr>
+                <td>
+                    {{ formatDateD this ../month ../year}}
+                </td>
+                {{#each ../users}}
+                    <td data-user="{{ _id }}" data-day="{{ .. }}" data-month="{{ ../../month }}"
+                        data-year="{{ ../../year }}">
+                        {{#each findTimes .. ../../month ../../year  _id}}
+                            {{formatDateHHMM starttime}} - {{formatDateHHMM endtime}} <a href="#" class="deletetime"><i
+                                class="fa fa-minus"></i></a>
                         {{/each}}
-                        <tr>
-                            <td>
-                                Stunden gearbeitet
-                            </td>
-                            {{#each ../users}}
-                            <td>
-                                    {{getWorkedHours ../../month ../../year  _id }}
-                            </td>
-                            {{/each}}
-                        </tr>
-                        <tr>
-                            <td>
-                                Stunden angerechnet
-                            </td>
-                            {{#each ../users}}
-                            <td>
-                                    {{getWorkedHours ../../month ../../year  _id 1 }}
-                            </td>
-                            {{/each}}
-                        </tr>
-                        </tbody>
-                
-        </table>
+                        <div class="addtimefield"></div>
+                        <a href="#" class="addtime"><i class="fa fa-plus"></i></a>
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        <tr>
+            <td>
+                Stunden gearbeitet
+            </td>
+            {{#each ../users}}
+                <td>
+                    {{getWorkedHours ../../month ../../year  _id }}
+                </td>
+            {{/each}}
+        </tr>
+        <tr>
+            <td>
+                Stunden angerechnet
+            </td>
+            {{#each ../users}}
+                <td>
+                    {{getWorkedHours ../../month ../../year  _id 1 }}
+                </td>
+            {{/each}}
+        </tr>
+        </tbody>
+
+    </table>
 </template>
